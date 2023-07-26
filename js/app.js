@@ -20,19 +20,16 @@ class CalorieTracker {
         this.#render();
     }
 
-    // Public method to add a meal
-    addMeal(meal) {
-        this.#meals.push(meal);
-        this.#totalCalories += meal.calories;
-        this.#displayNewMeal(meal);
-        this.#render();
-    }
-
-    // Public method to add a workout
-    addWorkout(workout) {
-        this.#workouts.push(workout);
-        this.#totalCalories -= workout.calories;
-        this.#displayNewWorkout(workout);
+    // Public method to add a meal or workout
+    addItem(item, type) {
+        if (type === 'meal') {
+            this.#meals.push(item);
+            this.#totalCalories += item.calories;
+        } else if (type === 'workout') {
+            this.#workouts.push(item);
+            this.#totalCalories -= item.calories;
+        }
+        this.#displayNewItem(item, type);
         this.#render();
     }
 
@@ -160,18 +157,18 @@ class CalorieTracker {
         this.#progressEl.style.width = `${Math.min(percentage, 100)}%`;
     }
 
-    // Helper method to display a new meal in the UI
-    #displayNewMeal(meal) {
-        const mealsEl = document.querySelector('#meal-items');
-        const mealEl = document.createElement('div');
-        mealEl.classList.add('card', 'my-2');
-        mealEl.setAttribute('data-id', meal.id);
-        mealEl.innerHTML = `
+    // Helper method to display a new meal or workout in the UI
+    #displayNewItem(item, type) {
+        const itemsEl = type === 'meal' ? document.querySelector('#meal-items') : document.querySelector('#workout-items');
+        const itemEl = document.createElement('div');
+        itemEl.classList.add('card', 'my-2');
+        itemEl.setAttribute('data-id', item.id);
+        itemEl.innerHTML = `
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-between">
-                <h4 class="mx-1">${meal.name}</h4>
-                <div class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5">
-                  ${meal.calories}
+                <h4 class="mx-1">${item.name}</h4>
+                <div class="fs-1 bg-${type === 'meal' ? 'primary' : 'secondary'} text-white text-center rounded-2 px-2 px-sm-5">
+                  ${item.calories}
                 </div>
                 <button class="delete btn btn-danger btn-sm mx-2">
                   <i class="fa-solid fa-xmark"></i>
@@ -179,30 +176,9 @@ class CalorieTracker {
               </div>
             </div>
         `;
-        mealsEl.appendChild(mealEl);
+        itemsEl.appendChild(itemEl);
     }
 
-    // Helper method to display a new workout in the UI
-    #displayNewWorkout(workout) {
-        const workoutsEl = document.querySelector('#workout-items');
-        const workoutEl = document.createElement('div');
-        workoutEl.classList.add('card', 'my-2');
-        workoutEl.setAttribute('data-id', workout.id);
-        workoutEl.innerHTML = `
-            <div class="card-body">
-              <div class="d-flex align-items-center justify-content-between">
-                <h4 class="mx-1">${workout.name}</h4>
-                <div class="fs-1 bg-secondary text-white text-center rounded-2 px-2 px-sm-5">
-                  ${workout.calories}
-                </div>
-                <button class="delete btn btn-danger btn-sm mx-2">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              </div>
-            </div>
-        `;
-        workoutsEl.appendChild(workoutEl);
-    }
 }
 
 // Meal class to represent a meal with name and calories
@@ -246,17 +222,12 @@ class App {
         e.preventDefault();
         const name = document.querySelector(`#${type}-name`);
         const calories = document.querySelector(`#${type}-calories`);
-        // if (name.value === '' || calories.value === '') {
-        //     alert('Enter all fields');
-        //     return;
-        // }
-        if (type === 'meal') {
-            const meal = new Meal(name.value, +calories.value);
-            this.tracker.addMeal(meal);
-        } else if (type === 'workout') {
-            const workout = new Workout(name.value, +calories.value);
-            this.tracker.addWorkout(workout);
+        if (name.value === '' || calories.value === '') {
+            alert('Enter all fields');
+            return;
         }
+        const item = type === 'meal' ? new Meal(name.value, +calories.value) : new Workout(name.value, +calories.value);
+        this.tracker.addItem(item, type);
         name.value = '';
         calories.value = '';
         const collapseElement = document.querySelector(`#collapse-${type}`);
