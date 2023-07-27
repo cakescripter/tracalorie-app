@@ -2,7 +2,7 @@
 class CalorieTracker {
     // Private internal state variables
     #calorieLimit = Storage.getCalorieLimit()
-    #totalCalories = 0;
+    #totalCalories = Storage.getTotalCalories(0)
     #meals = [];
     #workouts = [];
 
@@ -29,6 +29,7 @@ class CalorieTracker {
             this.#workouts.push(item);
             this.#totalCalories -= item.calories;
         }
+        Storage.setTotalCalories(this.#totalCalories)
         this.#displayNewItem(item, type);
         this.#render();
     }
@@ -212,6 +213,19 @@ class Storage {
     }
     static setCalorieLimit(calorieLimit) {
         localStorage.setItem('calorieLimit', calorieLimit)
+    }
+
+    static getTotalCalories(defaultCalories = 0) {
+        let totalCalories
+        if (localStorage.getItem('totalCalories') === null) {
+            totalCalories = defaultCalories
+        } else {
+            totalCalories = +localStorage.getItem('totalCalories')
+        }
+        return totalCalories
+    }
+    static setTotalCalories(calories) {
+        localStorage.setItem('totalCalories', calories)
     }
 }
 // App class to manage the application and interact with the tracker
