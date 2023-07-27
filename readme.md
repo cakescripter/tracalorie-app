@@ -6,7 +6,7 @@ This repository houses a user-friendly Calorie Tracker web application developed
 
 ### Demo:
 
-Currently not deployed :c
+Check it out live: [Tracalorie App](https://chimerical-paletas-0ee4cd.netlify.app)
 ![Screen projektu](Tracalorie.png)
 
 ### Key Features:
