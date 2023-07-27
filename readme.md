@@ -19,5 +19,7 @@ Currently not deployed :c
 
 - **Filtering items:** For easy organization and quick access, the app allows you to search and filter through the added meals and workouts using the provided filter input fields.
 
-#### Planned Improvements:
-- **Local Storage Integration:** As part of a planned improvement, I am eager to add local storage functionality to the application. This enhancement will ensure that your tracked data persists even after closing the browser or refreshing the page.
+- **Local Storage Integration:** The application now incorporates local storage functionality, ensuring that your tracked data persists even after closing the browser or refreshing the page. This enhancement provides a more seamless experience and prevents data loss.
+
+### Known Issue:
+After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate Calories and Progress Bar:** Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal.
