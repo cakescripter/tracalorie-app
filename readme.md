@@ -22,4 +22,4 @@ Currently not deployed :c
 - **Local Storage Integration:** The application now incorporates local storage functionality, ensuring that your tracked data persists even after closing the browser or refreshing the page. This enhancement provides a more seamless experience and prevents data loss.
 
 ### Known Issue:
-After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate Calories and Progress Bar:** Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal.
+After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate calories and progress bar**. Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal.
