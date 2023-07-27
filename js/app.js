@@ -1,7 +1,7 @@
 // CalorieTracker class to manage calorie tracking
 class CalorieTracker {
     // Private internal state variables
-    #calorieLimit = 2000;
+    #calorieLimit = Storage.getCalorieLimit()
     #totalCalories = 0;
     #meals = [];
     #workouts = [];
@@ -66,6 +66,7 @@ class CalorieTracker {
     // Public method to set the calorie limit
     setLimit(calorieLimit) {
         this.#calorieLimit = calorieLimit;
+        Storage.setCalorieLimit(calorieLimit)
         this.#displayCalorieLimit();
         this.#render();
     }
@@ -199,6 +200,20 @@ class Workout {
     }
 }
 
+class Storage {
+    static getCalorieLimit(defaultLimit = 2000) {
+        let calorieLimit
+        if (localStorage.getItem('calorieLimit') === null) {
+            calorieLimit = defaultLimit
+        } else {
+            calorieLimit = +localStorage.getItem('calorieLimit')
+        }
+        return calorieLimit
+    }
+    static setCalorieLimit(calorieLimit) {
+        localStorage.setItem('calorieLimit', calorieLimit)
+    }
+}
 // App class to manage the application and interact with the tracker
 class App {
     constructor() {
@@ -284,5 +299,3 @@ class App {
 
 // Initialize the app
 const app = new App();
-
-// @ls 6
