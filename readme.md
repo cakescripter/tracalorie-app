@@ -19,12 +19,6 @@ Check it out live: [Tracalorie App](https://chimerical-paletas-0ee4cd.netlify.ap
 
 - **Filtering items:** For easy organization and quick access, the app allows you to search and filter through the added meals and workouts using the provided filter input fields.
 
-- **Local Storage Integration:** The application now incorporates local storage functionality, ensuring that your tracked data persists even after closing the browser or refreshing the page. This enhancement provides a more seamless experience and prevents data loss.
+- **Local Storage Integration:** _(v2)_ The application now incorporates local storage functionality, ensuring that your tracked data persists even after closing the browser or refreshing the page. This enhancement provides a more seamless experience and prevents data loss.
 
-### Known Issue:
-After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate calories and progress bar**. Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal. @edit: it actually occurs only when removing meal, workout seem to work properly. Bar updates correctly when reloading page tho.
-
-### Planned improvements:
-- **Webpack Integration:** To optimize the application's performance and ensure efficient loading of assets, I'm planning to integrate Webpack into the project. Webpack will help bundle and minify the JavaScript, CSS, and other assets, reducing the overall file sizes and improving the application's load time. Webpack will also enable me to use the latest ECMAScript modules (ES modules) syntax, allowing for better code organization and modularity.
-
-- **Refactoring to Modules:** Currently, the application is developed using Vanilla JavaScript, which means that all the code exists in a single script file. To make the code more modular, maintainable, and scalable, I plan to refactor it using JavaScript modules.
+- **Webpack Integration:** _(v3)_ Webpack was integrated into the project to optimize its performance and loading times. By bundling and minifying JavaScript, CSS, and other assets, the overall file sizes were reduced, leading to faster loading times for users. Additionally, Webpack allowed the utilization of the latest ECMAScript modules (ES modules) syntax, enabling better code organization and modularity.
