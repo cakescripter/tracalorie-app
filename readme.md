@@ -22,7 +22,7 @@ Check it out live: [Tracalorie App](https://chimerical-paletas-0ee4cd.netlify.ap
 - **Local Storage Integration:** The application now incorporates local storage functionality, ensuring that your tracked data persists even after closing the browser or refreshing the page. This enhancement provides a more seamless experience and prevents data loss.
 
 ### Known Issue:
-After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate calories and progress bar**. Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal.
+After adding local storage i've noticed an intermittent issue with the application which is  **inaccurate calories and progress bar**. Occasionally, the total calorie count and progress bar do not update correctly, leading to inaccurate representations of the consumed calories and progress towards the daily goal. @edit: it actually occurs only when removing meal, workout seem to work properly. Bar updates correctly when reloading page tho.
 
 ### Planned improvements:
 - **Webpack Integration:** To optimize the application's performance and ensure efficient loading of assets, I'm planning to integrate Webpack into the project. Webpack will help bundle and minify the JavaScript, CSS, and other assets, reducing the overall file sizes and improving the application's load time. Webpack will also enable me to use the latest ECMAScript modules (ES modules) syntax, allowing for better code organization and modularity.
